@@ -1,0 +1,29 @@
+{
+    "name": "tjwenke/laravel-alidayu",
+    "description": "Alidayu sdk for laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xuanyuanwen",
+            "email": "wenke@qfplan.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tjwenke\\Alidayu\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tjwenke\\Alidayu\\ServiceProvider"
+            ],
+            "aliases": {
+                "Alidayu": "Tjwenke\\Alidayu\\Facade"
+            }
+        }
+    },
+    "require": {
+        "flc/alidayu": "^2.0"
+    }
+}
