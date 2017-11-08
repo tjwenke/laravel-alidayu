@@ -19,7 +19,9 @@
                 "Tjwenke\\Alidayu\\ServiceProvider"
             ],
             "aliases": {
-                "Alidayu": "Tjwenke\\Alidayu\\Facade"
+                "DayuMessage": "Tjwenke\\Alidayu\\Facades\\Message",
+                "DayuCode": "Tjwenke\\Alidayu\\Facades\\Code",
+                "DayuChecker": "Tjwenke\\Alidayu\\Facades\\Checker"
             }
         }
     },

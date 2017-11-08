@@ -7,6 +7,11 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 class ServiceProvider extends LaravelServiceProvider
 {
     protected $defer = true;
+    public $apps = [
+        'message' => MessageService::class,
+        'code' => VerificationCodeSendService::class,
+        'checker' => VerificationCodeCheckService::class
+    ];
 
     /**
      * Bootstrap the application services.
@@ -30,13 +35,22 @@ class ServiceProvider extends LaravelServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/config.php', 'alidayu'
         );
-        $this->app->singleton(MessageService::class, function ($app) {
-            return new MessageService();
-        });
+
+        foreach ($this->apps as $name => $class) {
+            $name = 'alidayu.' . $name;
+            $this->app->singleton($name, function ($app) use ($class) {
+                return new $class(config('alidayu'));
+            });
+            // $this->app->alias($class, $name);
+        }
     }
     
     public function provides()
     {
-        return [MessageService::class];
+        $apps = [];
+        foreach ($this->apps as $name => $class) {
+            array_push($apps, 'alidayu.' . $name);
+        }
+        return $apps;
     }
 }

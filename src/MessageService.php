@@ -13,13 +13,14 @@ class MessageService {
 	protected $request;
 	protected $log_path;
 
-	public function __constructor($config)
+	public function __construct($config)
 	{
-		$this->client = new Client([
+		$this->client = new Client(new App([
 			'app_key' => $config['app_key'],
-			'app_secret' => $config['app_secret'];
-		]);
+			'app_secret' => $config['app_secret']
+		]));
 		$this->request = new AlibabaAliqinFcSmsNumSend;
+		// dd($this->request);
 		if (config('app.debug')) {
 			$this->log_path = $config['log_path'];
 		}
@@ -27,6 +28,7 @@ class MessageService {
 
 	public function template($code)
 	{
+		// dd($this->request);
 		$this->request->setSmsTemplateCode($code);
 		return $this;
 	}
@@ -47,11 +49,12 @@ class MessageService {
 	{
 		$this->request->setRecNum($phone);
 		$res = $this->client->execute($this->request);
-		if ($res->result->err_code !== 0 && $this->log_path) {
+		// var_dump($res);
+		if (!$res->result->success && $this->log_path) {
 			Log::useFiles($this->log_path);
 			Log::info('message send fail', [
 				'request_id' => $res->request_id,
-				'params' => $this->request->params,
+				'params' => $this->request->getParams(),
 				'result' => [
 					'err_code' => $res->result->err_code,
 					'model' => $res->result->model,

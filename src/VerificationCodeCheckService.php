@@ -18,6 +18,7 @@ class VerificationCodeCheckService {
 	{
 		$key = $this->domain . ':' . $phone;
 		$data = Cache::get($key);
+		// dd($data);
 		if (!$data) {
 			return [
 				'code' => 2,
@@ -42,10 +43,12 @@ class VerificationCodeCheckService {
 
 	private function updateData($key, $data)
 	{
+		var_dump($data);
 		if ($data['fail'] < 1 || $data['success'] < 1) {
 			Cache::forget($key);
 		} else {
 			Cache::put($key, $data, $data['expire_at']);
+			var_dump(Cache::get($key));
 		}
 	}
 }

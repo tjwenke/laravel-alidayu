@@ -5,7 +5,7 @@ namespace Tjwenke\Alidayu;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 
-class VerificationCodeService extends MessageService {
+class VerificationCodeSendService extends MessageService {
 
 	public $code_length = 4;
 	public $expire_after = 30;
@@ -15,9 +15,9 @@ class VerificationCodeService extends MessageService {
 	public $domain = 'domain';
 	public $params = [];
 
-	public function __constructor($config)
+	public function __construct($config)
 	{
-		parent::__constructor($config);
+		parent::__construct($config);
 		$this->code_length = $config['code_length'];
 		$this->success_times = $config['success_times'];
 		$this->fail_times = $config['fail_times'];
