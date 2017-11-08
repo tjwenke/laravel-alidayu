@@ -5,6 +5,17 @@ composer require tjwenke/laravel-alidayu
 php artisan vendor:publish --provider="Tjwenke\Alidayu\ServiceProvider"
 ````
 Then you should change the config file in ``config/alidayu.php``
+````
+app_key: alidayu app key 
+app_secret: alidayu app secret
+log_path: error log path, just when app.debug=true will write log
+code_length: verification code length
+expire_after: verification code expire time, minutes
+resend_delay: verification code resend delay time, minutes
+success_times: verfication code check success times
+fail_times: verfication code check fail times
+````
+when verfication code check success times or fail times less than 0, verfication code will be expired.
 
 # Usage
 ## Send Message
