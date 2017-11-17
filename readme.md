@@ -51,3 +51,4 @@ $result = Checker::domain('verification code domain')
 1 - verification code sending  
 2 - verification code expire  
 3 - verification code wrong  
+4 - message send fail
