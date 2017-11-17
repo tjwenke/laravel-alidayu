@@ -8,9 +8,9 @@ class ServiceProvider extends LaravelServiceProvider
 {
     protected $defer = true;
     public $apps = [
-        'message' => MessageService::class,
-        'code' => VerificationCodeSendService::class,
-        'checker' => VerificationCodeCheckService::class
+        'message' => Services\MessageService::class,
+        'code' => Services\VerificationCodeSendService::class,
+        'checker' => Services\VerificationCodeCheckService::class
     ];
 
     /**
