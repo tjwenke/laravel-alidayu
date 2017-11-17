@@ -1,6 +1,6 @@
 <?php
 
-namespace Tjwenke\Alidayu;
+namespace Tjwenke\Alidayu\Services;
 
 use Flc\Alidayu\Client;
 use Flc\Alidayu\App;

@@ -1,6 +1,6 @@
 <?php 
 
-namespace Tjwenke\Alidayu;
+namespace Tjwenke\Alidayu\Services;
 
 use Illuminate\Support\Facades\Cache;
 
