@@ -49,7 +49,6 @@ class MessageService {
 	{
 		$this->request->setRecNum($phone);
 		$res = $this->client->execute($this->request);
-		// var_dump($res);
 		if (!$res->result->success && $this->log_path) {
 			Log::useFiles($this->log_path);
 			Log::info('message send fail', [
@@ -63,6 +62,6 @@ class MessageService {
 				],
 			]);
 		}
-		return $res->result;
+		return $res->result->success;
 	}
 }

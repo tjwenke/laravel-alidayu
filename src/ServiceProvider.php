@@ -23,6 +23,7 @@ class ServiceProvider extends LaravelServiceProvider
         $this->publishes([
             __DIR__.'/config.php' => config_path('alidayu.php'),
         ]);
+        $this->loadTranslationsFrom(__DIR__.'/message.php', 'message');
     }
 
     /**
